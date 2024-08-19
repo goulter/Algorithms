@@ -6,6 +6,12 @@ If a give you the note, can you create that note from the magazine text? Each ti
 it must also appear at least the same number of times in the magazine text.
 */
 
+/*
+The time complexity of this program is O(n),in other words, linear time complexity.
+More detailed, it is O(n) for the 1st loop and O(m) for the second loop.
+You can call this O(n)+O(m) or O(n+m), but for simplicity and practicality, it is O(n).
+*/
+
 function harmlessRandomNote(note, magazine){
     /*string.split(<what character to split the string on>) returns an array
     "one two three".split(" ") returns ["one", "two", "three"]
