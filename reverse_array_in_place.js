@@ -19,7 +19,7 @@ function rev_arr_in_place(arr){
     */
 
     //0123 is the sample arr.
-    while (left_index <= right_index){ 
+    while (left_index < right_index){ 
         //the complexity is O(n). The swap of the two indices takes 3 moves. 
         //3 moves * (length/2). length/2 because thats how many times it takes til li is not <= ri.
         //length = 4, 6 moves... 10 is 15 20 is 30, 40 is 60. 80 is 120. 
@@ -37,5 +37,5 @@ function rev_arr_in_place(arr){
     //} 
 }
 
-rev_arr = rev_arr_in_place([-1,55,1,2,-3,4]);
+rev_arr = rev_arr_in_place([0,1,2,3,4]);
 console.log(rev_arr);
