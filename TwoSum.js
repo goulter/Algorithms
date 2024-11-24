@@ -1,28 +1,25 @@
-const { number } = require("yargs");
+const { array } = require("yargs");
 
 function TwoSum(numArray, Sum){
     //return every pair of numbers in numArray that add up to Sum.
-    var numberObject={};
+    var arrayHash={};
+    var indexAnswerArray=[]; //indexes of the 2 numbers in array that add up to Sum.
+    var valueAnswerArray=[]; //values of the 2 numbers in array that add up to Sum.
     //fill the object
 
-    numArray.forEach((number)=>{
-        numberObject[number]=1;
-    })
-
-    const keysArray = Object.keys(numberObject);
-    console.log(keysArray);    
-
-    for(let key of Object.keys(numberObject)){
-        let index = keysArray.indexOf(key);
-        for(let nextKey of Object.keys(numberObject)){
-            console.log(`index, keysArray.indexOf(key) ${index},${keysArray.indexOf(key)}`);
-            // if(index !== keysArray.indexOf(key)){
-                console.log(key,nextKey);
-            // }
+    //to know if a number in the array adds with another number in the array to get Sum, subtract number from Sum.
+    numArray.forEach((number, index) => {
+        let counterPart = Sum - number;
+        if (counterPart in arrayHash){ //this means a key exists in the hash that adds with the number to form the sum.
+            console.log('yes ', index, arrayHash[counterPart])
+            indexAnswerArray.push([index, arrayHash[counterPart]]);
+            valueAnswerArray.push(numArray[index],numArray[arrayHash[counterPart]])
         }
-        
-    }
-
+        arrayHash[number]=index; //regardless, put the number and the index into the hash so we know what we have and use it for the next comparison.
+    })
+    return {indexAnswerArray, valueAnswerArray};
+    //THIS IS O(N) COMPLEXITY SINCE TGHE SEARCH IS IN A HASH. NO DOUBLE LOOPS ETC.
 }
 
-TwoSum([1,6,4,5,3,3]);
+let answer = TwoSum([4,5,3,2],6);
+console.log(answer);
